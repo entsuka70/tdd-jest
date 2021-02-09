@@ -3,6 +3,7 @@ import { add } from "../src/index";
 import { subtract } from "../src/index";
 import { divide } from "../src/index";
 import { checkArgsNumber } from "../src/index";
+import { checkNumberValue } from "../src/index";
 
 describe('Let us FIRST TIME TDD !!', () => {
     it('check multiply function', () => {
@@ -26,6 +27,12 @@ describe('Let us FIRST TIME TDD !!', () => {
     it('check args length', () => {
         expect(checkArgsNumber(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,31)).toBeFalsy();
         expect(checkArgsNumber(1,2,3,4,5,6,7,8,9,10)).toBeUndefined();
+    });
+
+    it('check args style', () => {
+        expect(checkNumberValue(1,2,3)).toBeUndefined();
+        expect(checkNumberValue('a','b','c')).toBeFalsy();
+        expect(checkNumberValue([])).toBeFalsy();
     });
 
 });

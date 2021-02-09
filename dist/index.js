@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -43,12 +43,26 @@ var checkArgsNumber = function () {
         args[_i] = arguments[_i];
     }
     if (args.length > 30) {
-        console.log('too long');
+        console.log(args.length + " : too long");
         return false;
     }
-    console.log('not long');
+    console.log(args.length + " : not long");
 };
 exports.checkArgsNumber = checkArgsNumber;
+var checkNumberValue = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    args.forEach(function (element) {
+        if (typeof element !== 'number') {
+            console.log(element + " : Not number(" + typeof element + ")");
+            return false;
+        }
+        console.log(element + " : Is number");
+    });
+};
+exports.checkNumberValue = checkNumberValue;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -58,6 +72,7 @@ readline.promptCLLoop({
         }
         console.log.apply(console, args);
         console.log(exports.multiply.apply(void 0, args));
+        exports.checkNumberValue.apply(void 0, args);
         exports.checkArgsNumber.apply(void 0, args);
         return exports.multiply.apply(void 0, args);
     },
