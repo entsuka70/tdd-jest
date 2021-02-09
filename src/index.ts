@@ -18,11 +18,20 @@ export const divide = (...args: number[]): number => {
     return args.reduce((a: number, b: number): number => a / b);
 }
 
+export const checkArgsNumber = (...args: number[]):boolean|void => {
+    if (args.length > 30) {
+        console.log('too long');
+        return false;
+    }
+    console.log('not long');
+}
+
 const readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function(...args: number[]) {
         console.log(...args);
         console.log(multiply(...args));
+        checkArgsNumber(...args);
         return multiply(...args);
     },
     aCalc: function(...args: number[]): number {

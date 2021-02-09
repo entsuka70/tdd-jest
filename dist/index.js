@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -37,6 +37,18 @@ var divide = function () {
     return args.reduce(function (a, b) { return a / b; });
 };
 exports.divide = divide;
+var checkArgsNumber = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    if (args.length > 30) {
+        console.log('too long');
+        return false;
+    }
+    console.log('not long');
+};
+exports.checkArgsNumber = checkArgsNumber;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -46,6 +58,7 @@ readline.promptCLLoop({
         }
         console.log.apply(console, args);
         console.log(exports.multiply.apply(void 0, args));
+        exports.checkArgsNumber.apply(void 0, args);
         return exports.multiply.apply(void 0, args);
     },
     aCalc: function () {
