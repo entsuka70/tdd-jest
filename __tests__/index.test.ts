@@ -4,6 +4,7 @@ import { subtract } from "../src/index";
 import { divide } from "../src/index";
 import { checkArgsNumber } from "../src/index";
 import { checkNumberValue } from "../src/index";
+import { checkMaxSumValue } from "../src/index";
 
 describe('Let us FIRST TIME TDD !!', () => {
     it('check multiply function', () => {
@@ -35,4 +36,8 @@ describe('Let us FIRST TIME TDD !!', () => {
         expect(checkNumberValue([])).toBeFalsy();
     });
 
+    it('check max sum value', () => {
+        expect(checkMaxSumValue(1000,1)).toMatch(/^too big/);
+        expect(checkMaxSumValue(100,1)).toBeUndefined();
+    });
 });

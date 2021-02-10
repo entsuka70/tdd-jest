@@ -26,7 +26,7 @@ export const checkArgsNumber = (...args: number[]):boolean|void => {
     console.log(`${args.length} : not long`);
 };
 
-export const checkNumberValue = (...args: number[]):boolean|void => {
+export const checkNumberValue = (...args: any[]):boolean|void => {
     args.forEach( element => {
         if (typeof element !== 'number') {
             console.log(`${element} : Not number(${typeof element})`);
@@ -34,6 +34,18 @@ export const checkNumberValue = (...args: number[]):boolean|void => {
         }
         console.log(`${element} : Is number`);
     });
+};
+
+export const checkMaxSumValue = (...args: number[]):string|void => {
+    // 【疑問点】
+    // 足し算を合計するのに、合算するaddメソッドと同じ処理をする必要がある
+    // ①addメソッド内で条件分岐 ②別にメソッドを作成してそこで判定(但しaddメソッドと同様な書き方をここでも行う)
+    let sum = args.reduce((a: number, b: number): number => Number(a) + Number(b));
+    if (sum > 1000) {
+        console.log(`sum is ${sum} too big`);
+        return 'too big';
+    }
+    console.log(`sum is ${sum}`);
 };
 
 const readline = require('readline-sync');
@@ -48,6 +60,7 @@ readline.promptCLLoop({
     aCalc: function(...args: number[]): number {
         console.log(...args);
         console.log(add(...args));
+        checkMaxSumValue(...args);
         return add(...args);
     },
     sCalc: function(...args: number[]): number {

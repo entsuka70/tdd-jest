@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -63,6 +63,22 @@ var checkNumberValue = function () {
     });
 };
 exports.checkNumberValue = checkNumberValue;
+var checkMaxSumValue = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    // 【疑問点】
+    // 足し算を合計するのに、合算するaddメソッドと同じ処理をする必要がある
+    // ①addメソッド内で条件分岐 ②別にメソッドを作成してそこで判定(但しaddメソッドと同様な書き方をここでも行う)
+    var sum = args.reduce(function (a, b) { return Number(a) + Number(b); });
+    if (sum > 1000) {
+        console.log("sum is " + sum + " too big");
+        return 'too big';
+    }
+    console.log("sum is " + sum);
+};
+exports.checkMaxSumValue = checkMaxSumValue;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -83,6 +99,7 @@ readline.promptCLLoop({
         }
         console.log.apply(console, args);
         console.log(exports.add.apply(void 0, args));
+        exports.checkMaxSumValue.apply(void 0, args);
         return exports.add.apply(void 0, args);
     },
     sCalc: function () {
