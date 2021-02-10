@@ -57,6 +57,15 @@ export const checkNegativeValue = (...args: number[]): string|void => {
     console.log('sum is not negative');
 }
 
+export const checkMaxMultiplyValue = (...args: number[]): string|void => {
+    let multi = args.reduce((a: number, b: number): number => a * b);
+    if (multi > 1000) {
+        console.log(`multiply is ${multi} over 1000`);
+        return 'big big number';
+    }
+    console.log('multiply is under 1000');
+}
+
 const readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function(...args: number[]) {
@@ -64,6 +73,7 @@ readline.promptCLLoop({
         console.log(multiply(...args));
         checkNumberValue(...args);
         checkArgsNumber(...args);
+        checkMaxMultiplyValue(...args);
         return multiply(...args);
     },
     aCalc: function(...args: number[]): number {

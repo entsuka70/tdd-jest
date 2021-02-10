@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkNegativeValue = exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkMaxMultiplyValue = exports.checkNegativeValue = exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -92,6 +92,19 @@ var checkNegativeValue = function () {
     console.log('sum is not negative');
 };
 exports.checkNegativeValue = checkNegativeValue;
+var checkMaxMultiplyValue = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var multi = args.reduce(function (a, b) { return a * b; });
+    if (multi > 1000) {
+        console.log("multiply is " + multi + " over 1000");
+        return 'big big number';
+    }
+    console.log('multiply is under 1000');
+};
+exports.checkMaxMultiplyValue = checkMaxMultiplyValue;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -103,6 +116,7 @@ readline.promptCLLoop({
         console.log(exports.multiply.apply(void 0, args));
         exports.checkNumberValue.apply(void 0, args);
         exports.checkArgsNumber.apply(void 0, args);
+        exports.checkMaxMultiplyValue.apply(void 0, args);
         return exports.multiply.apply(void 0, args);
     },
     aCalc: function () {
