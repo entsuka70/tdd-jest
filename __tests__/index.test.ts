@@ -7,6 +7,7 @@ import { checkNumberValue } from "../src/index";
 import { checkMaxSumValue } from "../src/index";
 import { checkNegativeValue } from "../src/index";
 import { checkMaxMultiplyValue } from "../src/index";
+import { checkDecimalNumber } from "../src/index";
 
 describe('Let us FIRST TIME TDD !!', () => {
     it('check multiply function', () => {
@@ -51,5 +52,10 @@ describe('Let us FIRST TIME TDD !!', () => {
     it('check max multiply value', () => {
         expect(checkMaxMultiplyValue(200, 6)).toMatch(/^big big number/);
         expect(checkMaxMultiplyValue(200, 5)).toBeUndefined();
+    });
+
+    it('check decimal number', () => {
+        expect(checkDecimalNumber(10/3)).toMatch(/^indivisible/);
+        expect(checkDecimalNumber(10/4)).toBeUndefined();
     });
 });

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkMaxMultiplyValue = exports.checkNegativeValue = exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkDecimalNumber = exports.checkMaxMultiplyValue = exports.checkNegativeValue = exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -105,6 +105,20 @@ var checkMaxMultiplyValue = function () {
     console.log('multiply is under 1000');
 };
 exports.checkMaxMultiplyValue = checkMaxMultiplyValue;
+var checkDecimalNumber = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var divi = args.reduce(function (a, b) { return a / b; });
+    var decimal = divi.toString().split('.');
+    if (decimal[1].length > 2) {
+        console.log("divide decimal is " + decimal + " over 2");
+        return 'indivisible';
+    }
+    console.log('devide decimal is under 2');
+};
+exports.checkDecimalNumber = checkDecimalNumber;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -146,6 +160,7 @@ readline.promptCLLoop({
         }
         console.log.apply(console, args);
         console.log(exports.divide.apply(void 0, args));
+        exports.checkDecimalNumber.apply(void 0, args);
         return exports.divide.apply(void 0, args);
     },
 });

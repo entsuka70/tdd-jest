@@ -55,7 +55,7 @@ export const checkNegativeValue = (...args: number[]): string|void => {
         return 'negative number';
     }
     console.log('sum is not negative');
-}
+};
 
 export const checkMaxMultiplyValue = (...args: number[]): string|void => {
     let multi = args.reduce((a: number, b: number): number => a * b);
@@ -64,7 +64,17 @@ export const checkMaxMultiplyValue = (...args: number[]): string|void => {
         return 'big big number';
     }
     console.log('multiply is under 1000');
-}
+};
+
+export const checkDecimalNumber = (...args: number[]): string|void => {
+    let divi = args.reduce((a: number, b: number): number => a / b);
+    let decimal = divi.toString().split('.');
+    if (decimal[1].length > 2) {
+        console.log(`divide decimal is ${decimal} over 2`);
+        return 'indivisible';
+    }
+    console.log('devide decimal is under 2');
+};
 
 const readline = require('readline-sync');
 readline.promptCLLoop({
@@ -91,6 +101,7 @@ readline.promptCLLoop({
     dCalc: function(...args: number[]): number {
         console.log(...args);
         console.log(divide(...args));
+        checkDecimalNumber(...args);
         return divide(...args);
     },
 });
