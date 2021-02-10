@@ -48,6 +48,15 @@ export const checkMaxSumValue = (...args: number[]):string|void => {
     console.log(`sum is ${sum}`);
 };
 
+export const checkNegativeValue = (...args: number[]): string|void => {
+    let sum = args.reduce((a: number, b: number): number => a - b);
+    if (sum < 0) {
+        console.log(`sum is ${sum} NEGATIVE`);
+        return 'negative number';
+    }
+    console.log('sum is not negative');
+}
+
 const readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function(...args: number[]) {
@@ -66,6 +75,7 @@ readline.promptCLLoop({
     sCalc: function(...args: number[]): number {
         console.log(...args);
         console.log(subtract(...args));
+        checkNegativeValue(...args);
         return subtract(...args);
     },
     dCalc: function(...args: number[]): number {

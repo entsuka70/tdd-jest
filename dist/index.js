@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
+exports.checkNegativeValue = exports.checkMaxSumValue = exports.checkNumberValue = exports.checkArgsNumber = exports.divide = exports.subtract = exports.add = exports.multiply = void 0;
 var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -79,6 +79,19 @@ var checkMaxSumValue = function () {
     console.log("sum is " + sum);
 };
 exports.checkMaxSumValue = checkMaxSumValue;
+var checkNegativeValue = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var sum = args.reduce(function (a, b) { return a - b; });
+    if (sum < 0) {
+        console.log("sum is " + sum + " NEGATIVE");
+        return 'negative number';
+    }
+    console.log('sum is not negative');
+};
+exports.checkNegativeValue = checkNegativeValue;
 var readline = require('readline-sync');
 readline.promptCLLoop({
     mCalc: function () {
@@ -109,6 +122,7 @@ readline.promptCLLoop({
         }
         console.log.apply(console, args);
         console.log(exports.subtract.apply(void 0, args));
+        exports.checkNegativeValue.apply(void 0, args);
         return exports.subtract.apply(void 0, args);
     },
     dCalc: function () {
